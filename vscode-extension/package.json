@@ -1,0 +1,27 @@
+{
+  "name": "supabase-purescript",
+  "displayName": "Supabase PureScript",
+  "description": "Schema-aware autocomplete for PureScript Supabase bindings",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Programming Languages"],
+  "activationEvents": ["onLanguage:purescript"],
+  "main": "./extension.js",
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "contributes": {
+    "configuration": {
+      "title": "Supabase PureScript",
+      "properties": {
+        "supabasePurescript.serverPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the compiled LSP server (output/LSP.Server/index.js). If empty, looks in workspace node_modules."
+        }
+      }
+    }
+  }
+}

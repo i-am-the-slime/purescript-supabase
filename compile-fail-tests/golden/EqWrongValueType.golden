@@ -1,0 +1,53 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: supabase
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.EqWrongValueType
+[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:15:49
+
+  15    _ <- client # from Schema.products # select # eq_ @"price" "ten" # run
+                                                      ^^^^^^^^^^^^^^^^^^
+
+  Could not match type
+    Number
+  with type
+    String
+  while solving type class constraint
+    Supabase.Supabase.FilterType t1
+                                 String
+  while applying a function eq_
+    of type IsSymbol "price" => Cons @Type "price" t1 t2 t3 => FilterType t1 t4 => WriteForeign t4 => t4 -> FilterBuilder t3 t5 -> FilterBuilder t3 t5
+    to argument "ten"
+  while checking that expression (eq_) "ten"
+    has type FilterBuilder
+               ( description :: Maybe String
+               , id :: Int
+               , in_stock :: Boolean
+               , name :: String
+               , price :: Number
+               , tags :: Array String
+               )
+               ( description :: Maybe String
+               , id :: Int
+               , in_stock :: Boolean
+               , name :: String
+               , price :: Number
+               , tags :: Array String
+               )
+             -> t0
+  in value declaration test
+  where t0 is an unknown type
+        t1 is an unknown type
+        t4 is an unknown type
+        t3 is an unknown type
+        t5 is an unknown type
+        t2 is an unknown type
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.

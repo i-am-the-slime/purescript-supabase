@@ -1,0 +1,8 @@
+output/
+.spago/
+node_modules/
+.psc-ide-port
+.psci_modules/
+bun.lock
+vscode-extension/node_modules/
+vscode-extension/*.vsix

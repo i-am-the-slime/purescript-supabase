@@ -1,0 +1,53 @@
+package:
+  name: supabase
+  dependencies:
+    - aff
+    - aff-promise
+    - arrays
+    - console
+    - datetime
+    - dodo-printer
+    - effect
+    - either
+    - environment
+    - fetch
+    - fetch-core
+    - foldable-traversable
+    - foreign
+    - foreign-object
+    - js-fetch
+    - maybe
+    - newtype
+    - node-buffer
+    - node-event-emitter
+    - node-execa
+    - node-fs
+    - node-process
+    - node-streams
+    - nullable
+    - ordered-collections
+    - prelude
+    - strings
+    - unsafe-coerce
+    - untagged-union
+    - uuid
+    - yoga-json
+  test:
+    main: Test.Main
+    dependencies:
+      - spec
+      - spec-discovery
+      - aff
+      - arrays
+      - maybe
+      - nullable
+      - foreign
+      - unsafe-coerce
+      - newtype
+      - tuples
+      - compile-fail
+      - refs
+workspace:
+  packageSet:
+    registry: 76.1.0
+  extraPackages: {}

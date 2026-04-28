@@ -1,0 +1,35 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: stilthouse
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.OrWrongValueType
+[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:17:64
+
+  17    _ <- client # from Schema.products # select # or (NEA.cons' (eqC @"price" "ten") []) # run
+                                                                     ^^^^^^^^^^^^^^^^^^
+
+  Could not match type
+    Number
+  with type
+    String
+  while solving type class constraint
+    Supabase.Filter.FilterVal t0
+                              String
+  while applying a function eqC
+    of type IsSymbol "price" => Cons @Type "price" t0 t1 t2 => FilterVal t0 t3 => ToPostgrest t3 => t3 -> Condition t2
+    to argument "ten"
+  while inferring the type of (eqC) "ten"
+  in value declaration test
+  where t0 is an unknown type
+        t3 is an unknown type
+        t2 is an unknown type
+        t1 is an unknown type
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.

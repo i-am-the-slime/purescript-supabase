@@ -1,0 +1,11 @@
+export const jsonParse = (s) => { try { return JSON.parse(s); } catch { return {}; } };
+export const field = (k) => (o) => o?.[k] ?? null;
+export const fieldStr = (k) => (o) => o?.[k] != null ? String(o[k]) : "";
+export const fieldInt = (k) => (o) => o?.[k] ?? 0;
+export const fieldArr = (k) => (o) => Array.isArray(o?.[k]) ? o[k] : [];
+export const isNull = (x) => x == null;
+export const stringify = (x) => JSON.stringify(x);
+export const byteLength = (s) => Buffer.byteLength(s, "utf-8");
+export const exit = (code) => () => process.exit(code);
+export const parseIntNullable = (s) => { const n = parseInt(s, 10); return isNaN(n) ? null : n; };
+export const arraySlice = (start) => (arr) => arr.slice(start);

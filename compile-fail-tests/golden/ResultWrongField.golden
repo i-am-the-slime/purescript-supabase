@@ -1,0 +1,38 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: supabase
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.ResultWrongField
+[ERROR 1/1 PropertyIsMissing] src/_CompileFailTest.purs:15:24
+
+  15    let _ = res.data <#> _.nonexistent
+                             ^^^^^^^^^^^^^
+
+  Type of expression lacks required label nonexistent.
+  while checking that type { description :: Maybe String
+                           , id :: Int
+                           , in_stock :: Boolean
+                           , name :: String
+                           , price :: Number
+                           , tags :: Array String
+                           }
+    is at least as general as type { nonexistent :: t0
+                                   | t1
+                                   }
+  while checking that expression $0
+    has type { nonexistent :: t0
+             | t1
+             }
+  while checking type of property accessor $0.nonexistent
+  in value declaration test
+  where t0 is an unknown type
+        t1 is an unknown type
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.

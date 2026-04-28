@@ -1,0 +1,28 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: stilthouse
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.RpcWrongParamType
+[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:15:69
+
+  15    _ <- client # callRpcWith Schema.productsCheaperThan { max_price: "ten" } # run
+                                                                          ^^^^^
+
+  Could not match type
+    String
+  with type
+    Number
+  while checking that type String
+    is at least as general as type Number
+  while checking that expression "ten"
+    has type Number
+  in value declaration test
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.

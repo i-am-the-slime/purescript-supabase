@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Golden Mismatch: EqColumnFromWrongTable</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #1e1e2e; color: #cdd6f4; }
+    .toolbar { padding: 12px 24px; background: #313244; border-bottom: 1px solid #45475a; display: flex; align-items: center; gap: 16px; }
+    .toolbar h1 { font-size: 16px; font-weight: 600; flex: 1; }
+    .toggle { display: flex; border-radius: 6px; overflow: hidden; border: 1px solid #45475a; }
+    .toggle button {
+      padding: 5px 12px; font-size: 13px; font-weight: 600; border: none; cursor: pointer;
+      color: #a6adc8; background: transparent; font-family: inherit; transition: all 0.15s;
+    }
+    .toggle button.active { background: #585b70; color: #cdd6f4; }
+    .toggle button:hover:not(.active) { background: #31324488; }
+    .labels { display: flex; }
+    .labels > div { flex: 1; padding: 6px 24px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #a6adc8; background: #181825; border-bottom: 1px solid #45475a; }
+    .labels > div:first-child { border-right: 1px solid #45475a; color: #f38ba8; }
+    .labels > div:last-child { color: #a6e3a1; }
+    .labels.hidden { display: none; }
+    #editor { height: calc(100vh - 56px); }
+    #editor.with-labels { height: calc(100vh - 82px); }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <h1>EqColumnFromWrongTable</h1>
+    <div class="toggle">
+      <button id="btn-split" class="active">Split</button>
+      <button id="btn-unified">Unified</button>
+    </div>
+  </div>
+  <div class="labels" id="labels">
+    <div>Expected (golden)</div>
+    <div>Actual</div>
+  </div>
+  <div id="editor" class="with-labels"></div>
+  <script type="module">
+    import { EditorState } from "https://esm.sh/@codemirror/state@6.5.2"
+    import { EditorView } from "https://esm.sh/@codemirror/view@6.36.5?deps=@codemirror/state@6.5.2"
+    import { MergeView, unifiedMergeView } from "https://esm.sh/@codemirror/merge@6.7.3?deps=@codemirror/state@6.5.2,@codemirror/view@6.36.5"
+    const expected = `Reading Spago workspace configuration...\n\n✓ Selecting package to build: stilthouse\n\nDownloading dependencies...\nBuilding...\n[1 of 1] Compiling CompileFailTests.EqColumnFromWrongTable\n[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:15:49\n\n  15    _ <- client # from Schema.products # select # eq_ @\"user_id\" \"abc\" # run\n                                                      ^^^^^^^^^^^^^^^^^^^^\n\n  Could not match type\n    ( user_id :: t1\n    ...\n    | t2\n    )\n  with type\n    ( created_at :: Timestamp\n    , description :: Maybe String\n    , fts :: Maybe String\n    , id :: Int\n    , in_stock :: Boolean\n    , metadata :: Foreign\n    , name :: String\n    , price :: Number\n    , tags :: Array String\n    ...\n    )\n  while solving type class constraint\n    Prim.Row.Cons \"user_id\"\n                  t1\n                  t2\n                  ( created_at :: Timestamp\n                  , description :: Maybe String\n                  , fts :: Maybe String\n                  , id :: Int\n                  , in_stock :: Boolean\n                  , metadata :: Foreign\n                  , name :: String\n                  , price :: Number\n                  , tags :: Array String\n                  )\n  while applying a function eq_\n    of type IsSymbol \"user_id\" => Cons @Type \"user_id\" t1 t2 t3 => FilterType t1 t4 => WriteForeign t4 => t4 -> FilterBuilder t3 t5 -> FilterBuilder t3 t5\n    to argument \"abc\"\n  while checking that expression (eq_) \"abc\"\n    has type FilterBuilder\n               ( created_at :: Timestamp\n               , description :: Maybe String\n               , fts :: Maybe String\n               , id :: Int\n               , in_stock :: Boolean\n               , metadata :: Foreign\n               , name :: String\n               , price :: Number\n               , tags :: Array String\n               )\n               ( created_at :: Timestamp\n               , description :: Maybe String\n               , fts :: Maybe String\n               , id :: Int\n               , in_stock :: Boolean\n               , metadata :: Foreign\n               , name :: String\n               , price :: Number\n               , tags :: Array String\n               )\n             -> t0\n  in value declaration test\n  where t0 is an unknown type\n        t1 is an unknown type\n        t4 is an unknown type\n        t3 is an unknown type\n        t5 is an unknown type\n        t2 is an unknown type\n\n           Src   Lib   All\nWarnings     0     0     0\nErrors       1     0     1\n\n✘ Failed to build.`
+    const actual = `Reading Spago workspace configuration...\n\n✓ Selecting package to build: supabase\n\nDownloading dependencies...\nBuilding...\n[1 of 1] Compiling CompileFailTests.EqColumnFromWrongTable\n[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:15:49\n\n  15    _ <- client # from Schema.products # select # eq_ @\"user_id\" \"abc\" # run\n                                                      ^^^^^^^^^^^^^^^^^^^^\n\n  Could not match type\n    ( user_id :: t1\n    ...\n    | t2\n    )\n  with type\n    ( description :: Maybe String\n    , id :: Int\n    , in_stock :: Boolean\n    , name :: String\n    , price :: Number\n    , tags :: Array String\n    ...\n    )\n  while solving type class constraint\n    Prim.Row.Cons \"user_id\"\n                  t1\n                  t2\n                  ( description :: Maybe String\n                  , id :: Int\n                  , in_stock :: Boolean\n                  , name :: String\n                  , price :: Number\n                  , tags :: Array String\n                  )\n  while applying a function eq_\n    of type IsSymbol \"user_id\" => Cons @Type \"user_id\" t1 t2 t3 => FilterType t1 t4 => WriteForeign t4 => t4 -> FilterBuilder t3 t5 -> FilterBuilder t3 t5\n    to argument \"abc\"\n  while checking that expression (eq_) \"abc\"\n    has type FilterBuilder\n               ( description :: Maybe String\n               , id :: Int\n               , in_stock :: Boolean\n               , name :: String\n               , price :: Number\n               , tags :: Array String\n               )\n               ( description :: Maybe String\n               , id :: Int\n               , in_stock :: Boolean\n               , name :: String\n               , price :: Number\n               , tags :: Array String\n               )\n             -> t0\n  in value declaration test\n  where t0 is an unknown type\n        t1 is an unknown type\n        t4 is an unknown type\n        t3 is an unknown type\n        t5 is an unknown type\n        t2 is an unknown type\n\n           Src   Lib   All\nWarnings     0     0     0\nErrors       1     0     1\n\n✘ Failed to build.`
+    const theme = EditorView.theme({
+      "&": { height: "100%", background: "#1e1e2e" },
+      ".cm-content": { fontFamily: "'JetBrains Mono', monospace", fontSize: "14px", color: "#cdd6f4", lineHeight: "1.6" },
+      ".cm-gutters": { background: "#181825", color: "#6c7086", border: "none" },
+      ".cm-activeLineGutter": { background: "transparent" },
+      ".cm-activeLine": { background: "transparent" },
+      ".cm-selectionBackground": { background: "#45475a !important" },
+      ".cm-changedLine": { background: "#45475a33" },
+      ".cm-changedText": { background: "#89b4fa33" },
+    })
+    const splitTheme = EditorView.theme({
+      ".cm-mergeViewA .cm-changedText": { background: "#f38ba833" },
+      ".cm-mergeViewB .cm-changedText": { background: "#a6e3a133" },
+    })
+    const unifiedTheme = EditorView.theme({
+      ".cm-deletedChunk": { background: "#f38ba811" },
+      ".cm-deletedChunk .cm-changedText": { background: "#f38ba833" },
+      ".cm-insertedLine": { background: "#a6e3a108" },
+      ".cm-insertedLine .cm-changedText": { background: "#a6e3a133" },
+    })
+    const container = document.getElementById("editor")
+    const labels = document.getElementById("labels")
+    const btnSplit = document.getElementById("btn-split")
+    const btnUnified = document.getElementById("btn-unified")
+    let currentView = null
+    function destroyCurrent() {
+      if (currentView) { currentView.destroy(); currentView = null }
+      container.innerHTML = ""
+    }
+    function showSplit() {
+      destroyCurrent()
+      labels.classList.remove("hidden")
+      container.classList.add("with-labels")
+      currentView = new MergeView({
+        a: { doc: expected, extensions: [theme, splitTheme, EditorState.readOnly.of(true)] },
+        b: { doc: actual, extensions: [theme, splitTheme, EditorState.readOnly.of(true)] },
+        parent: container,
+      })
+      btnSplit.classList.add("active")
+      btnUnified.classList.remove("active")
+    }
+    function showUnified() {
+      destroyCurrent()
+      labels.classList.add("hidden")
+      container.classList.remove("with-labels")
+      currentView = new EditorView({
+        doc: actual,
+        extensions: [theme, unifiedTheme, EditorState.readOnly.of(true), unifiedMergeView({ original: expected, mergeControls: false })],
+        parent: container,
+      })
+      btnUnified.classList.add("active")
+      btnSplit.classList.remove("active")
+    }
+    btnSplit.addEventListener("click", showSplit)
+    btnUnified.addEventListener("click", showUnified)
+    showSplit()
+  </script>
+</body>
+</html>

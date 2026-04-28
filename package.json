@@ -1,0 +1,10 @@
+{
+  "name": "purescript-supabase",
+  "version": "0.1.0",
+  "type": "module",
+  "dependencies": {
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.49.4",
+    "uuid": "^11.1.0"
+  }
+}

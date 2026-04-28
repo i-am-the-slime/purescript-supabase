@@ -1,0 +1,41 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: stilthouse
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.InsertMissingRequired
+[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:14:17
+
+  14    _ <- client # insertInto Schema.products {} # runWith @(Array {})
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  Could not match type
+    ( name :: String
+    | t4
+    )
+  with type
+    ()
+  while solving type class constraint
+    Prim.Row.Union ( name :: String
+                   )
+                   t4
+                   (() @Type)
+  while applying a function insertInto
+    of type WriteForeign (Record t0) => Union @Type t0 t1 t2 => Union @Type t3 t4 t0 => Table t2 t3 t5 -> Record t0 -> Client -> FilterBuilder t2 t2
+    to argument products
+  while inferring the type of insertInto products
+  in value declaration test
+  where t2 is an unknown type
+        t3 is an unknown type
+        t5 is an unknown type
+        t0 is an unknown type
+        t1 is an unknown type
+        t4 is an unknown type
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.

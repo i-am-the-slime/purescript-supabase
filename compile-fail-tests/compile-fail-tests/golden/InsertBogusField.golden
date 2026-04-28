@@ -1,0 +1,78 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: stilthouse
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.InsertBogusField
+[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:14:40
+
+  14    _ <- client # from Schema.products # insert { bogus_field: 42 } # runWith @(Array {})
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  Could not match type
+    ( bogus_field :: Int
+    ...
+    | t2
+    )
+  with type
+    ( created_at :: Timestamp
+    , description :: Maybe String
+    , fts :: Maybe String
+    , id :: Int
+    , in_stock :: Boolean
+    , metadata :: Foreign
+    , name :: String
+    , price :: Number
+    , tags :: Array String
+    ...
+    )
+  while solving type class constraint
+    Prim.Row.Union ( bogus_field :: Int
+                   )
+                   t2
+                   ( created_at :: Timestamp
+                   , description :: Maybe String
+                   , fts :: Maybe String
+                   , id :: Int
+                   , in_stock :: Boolean
+                   , metadata :: Foreign
+                   , name :: String
+                   , price :: Number
+                   , tags :: Array String
+                   )
+  while applying a function insert
+    of type WriteForeign (Record t1) => Union @Type t1 t2 t3 => Record t1 -> QueryBuilder t3 t4 -> FilterBuilder t3 t3
+    to argument { bogus_field: 42
+                }
+  while checking that expression insert { bogus_field: 42
+                                        }
+    has type QueryBuilder
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
+               , id :: Int
+               , in_stock :: Boolean
+               , metadata :: Foreign
+               , name :: String
+               , price :: Number
+               , tags :: Array String
+               )
+               ( order_items :: Rel ... ...
+               , orders :: Rel ... ...
+               , product_categories :: Rel ... ...
+               )
+             -> t0
+  in value declaration test
+  where t0 is an unknown type
+        t3 is an unknown type
+        t4 is an unknown type
+        t1 is an unknown type
+        t2 is an unknown type
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.

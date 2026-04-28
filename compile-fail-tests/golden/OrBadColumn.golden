@@ -1,0 +1,53 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: supabase
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.OrBadColumn
+[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:16:64
+
+  16    _ <- client # from Schema.products # select # or (NEA.cons' (eqC @"bogus" "x") []) # run
+                                                                     ^^^^^^^^^^^^^^^^
+
+  Could not match type
+    ( bogus :: t0
+    ...
+    | t1
+    )
+  with type
+    ( description :: Maybe String
+    , id :: Int
+    , in_stock :: Boolean
+    , name :: String
+    , price :: Number
+    , tags :: Array String
+    ...
+    )
+  while solving type class constraint
+    Prim.Row.Cons "bogus"
+                  t0
+                  t1
+                  ( description :: Maybe String
+                  , id :: Int
+                  , in_stock :: Boolean
+                  , name :: String
+                  , price :: Number
+                  , tags :: Array String
+                  )
+  while applying a function eqC
+    of type IsSymbol "bogus" => Cons @Type "bogus" t0 t1 t2 => FilterVal t0 t3 => ToPostgrest t3 => t3 -> Condition t2
+    to argument "x"
+  while inferring the type of (eqC) "x"
+  in value declaration test
+  where t0 is an unknown type
+        t3 is an unknown type
+        t2 is an unknown type
+        t1 is an unknown type
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.

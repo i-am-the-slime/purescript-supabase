@@ -1,0 +1,76 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: stilthouse
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.InsertWrongValueType
+[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:14:40
+
+  14    _ <- client # from Schema.products # insert { name: 42 } # run
+                                             ^^^^^^^^^^^^^^^^^^^
+
+  Could not match type
+    Int
+  with type
+    String
+  while matching label name
+  while trying to match type
+                               ( name :: Int
+                               ...
+                               | t1
+                               )
+    with type
+                ( created_at :: Timestamp
+                , description :: Maybe String
+                , fts :: Maybe String
+                , id :: Int
+                , in_stock :: Boolean
+                , metadata :: Foreign
+                , name :: String
+                , price :: Number
+                , tags :: Array String
+                ...
+                )
+  while solving type class constraint
+    Prim.Row.Union ( name :: Int
+                   )
+                   t1
+                   ( created_at :: Timestamp
+                   , description :: Maybe String
+                   , fts :: Maybe String
+                   , id :: Int
+                   , in_stock :: Boolean
+                   , metadata :: Foreign
+                   , name :: String
+                   , price :: Number
+                   , tags :: Array String
+                   )
+  while checking that expression insert { name: 42
+                                        }
+    has type QueryBuilder
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
+               , id :: Int
+               , in_stock :: Boolean
+               , metadata :: Foreign
+               , name :: String
+               , price :: Number
+               , tags :: Array String
+               )
+               ( order_items :: Rel ... ...
+               , orders :: Rel ... ...
+               , product_categories :: Rel ... ...
+               )
+             -> t0
+  in value declaration test
+  where t0 is an unknown type
+        t1 is an unknown type
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.

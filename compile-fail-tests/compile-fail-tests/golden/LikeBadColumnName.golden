@@ -1,0 +1,83 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: stilthouse
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.LikeBadColumnName
+[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:14:49
+
+  14    _ <- client # from Schema.products # select # like @"titel" "%" # run
+                                                      ^^^^^^^^^^^^^^^^^
+
+  Could not match type
+    ( titel :: t1
+    ...
+    | t2
+    )
+  with type
+    ( created_at :: Timestamp
+    , description :: Maybe String
+    , fts :: Maybe String
+    , id :: Int
+    , in_stock :: Boolean
+    , metadata :: Foreign
+    , name :: String
+    , price :: Number
+    , tags :: Array String
+    ...
+    )
+  while solving type class constraint
+    Prim.Row.Cons "titel"
+                  t1
+                  t2
+                  ( created_at :: Timestamp
+                  , description :: Maybe String
+                  , fts :: Maybe String
+                  , id :: Int
+                  , in_stock :: Boolean
+                  , metadata :: Foreign
+                  , name :: String
+                  , price :: Number
+                  , tags :: Array String
+                  )
+  while applying a function like
+    of type IsSymbol "titel" => Cons @Type "titel" t1 t2 t3 => FilterType t1 t4 => WriteForeign t4 => t4 -> FilterBuilder t3 t5 -> FilterBuilder t3 t5
+    to argument "%"
+  while checking that expression (like) "%"
+    has type FilterBuilder
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
+               , id :: Int
+               , in_stock :: Boolean
+               , metadata :: Foreign
+               , name :: String
+               , price :: Number
+               , tags :: Array String
+               )
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
+               , id :: Int
+               , in_stock :: Boolean
+               , metadata :: Foreign
+               , name :: String
+               , price :: Number
+               , tags :: Array String
+               )
+             -> t0
+  in value declaration test
+  where t0 is an unknown type
+        t1 is an unknown type
+        t4 is an unknown type
+        t3 is an unknown type
+        t5 is an unknown type
+        t2 is an unknown type
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.

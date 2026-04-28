@@ -1,0 +1,58 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: stilthouse
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.RunResultWrongField
+[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:17:38
+
+  17      Just rows -> let _ = map _.bogus rows in pure unit
+                                           ^^^^
+
+  Could not match type
+    ( created_at :: Timestamp
+    , description :: Maybe String
+    , fts :: Maybe String
+    , id :: Int
+    , in_stock :: Boolean
+    , metadata :: Foreign
+    , name :: String
+    , price :: Number
+    , tags :: Array String
+    ...
+    )
+  with type
+    ( bogus :: t1
+    ...
+    | t2
+    )
+  while trying to match type { created_at :: Timestamp
+                             , description :: Maybe String
+                             , fts :: Maybe String
+                             , id :: Int
+                             , in_stock :: Boolean
+                             , metadata :: Foreign
+                             , name :: String
+                             , price :: Number
+                             , tags :: Array String
+                             }
+    with type { bogus :: t1
+              | t2
+              }
+  while checking that expression rows
+    has type t0
+               { bogus :: t1
+               | t2
+               }
+  in value declaration test
+  where t0 is an unknown type
+        t1 is an unknown type
+        t2 is an unknown type
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.

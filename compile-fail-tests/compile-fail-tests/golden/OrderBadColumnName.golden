@@ -1,0 +1,100 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: stilthouse
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.OrderBadColumnName
+[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:13:49
+
+  13    _ <- client # from Schema.products # select # order @"doesnt_exist" # run
+                                                      ^^^^^^^^^^^^^^^^^^^^^
+
+  Could not match type
+    ( doesnt_exist :: t1
+    ...
+    | t2
+    )
+  with type
+    ( created_at :: Timestamp
+    , description :: Maybe String
+    , fts :: Maybe String
+    , id :: Int
+    , in_stock :: Boolean
+    , metadata :: Foreign
+    , name :: String
+    , price :: Number
+    , tags :: Array String
+    ...
+    )
+  while solving type class constraint
+    Prim.Row.Cons "doesnt_exist"
+                  t1
+                  t2
+                  ( created_at :: Timestamp
+                  , description :: Maybe String
+                  , fts :: Maybe String
+                  , id :: Int
+                  , in_stock :: Boolean
+                  , metadata :: Foreign
+                  , name :: String
+                  , price :: Number
+                  , tags :: Array String
+                  )
+  while checking that type forall (val :: Type) (table :: Row Type) (result :: Row Type) (rest :: Row Type). IsSymbol "doesnt_exist" => Cons @Type "doesnt_exist" val rest table => FilterBuilder table result -> FilterBuilder table result
+    is at least as general as type FilterBuilder
+                                     ( created_at :: Timestamp
+                                     , description :: Maybe String
+                                     , fts :: Maybe String
+                                     , id :: Int
+                                     , in_stock :: Boolean
+                                     , metadata :: Foreign
+                                     , name :: String
+                                     , price :: Number
+                                     , tags :: Array String
+                                     )
+                                     ( created_at :: Timestamp
+                                     , description :: Maybe String
+                                     , fts :: Maybe String
+                                     , id :: Int
+                                     , in_stock :: Boolean
+                                     , metadata :: Foreign
+                                     , name :: String
+                                     , price :: Number
+                                     , tags :: Array String
+                                     )
+                                   -> t0
+  while checking that expression order
+    has type FilterBuilder
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
+               , id :: Int
+               , in_stock :: Boolean
+               , metadata :: Foreign
+               , name :: String
+               , price :: Number
+               , tags :: Array String
+               )
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
+               , id :: Int
+               , in_stock :: Boolean
+               , metadata :: Foreign
+               , name :: String
+               , price :: Number
+               , tags :: Array String
+               )
+             -> t0
+  in value declaration test
+  where t0 is an unknown type
+        t1 is an unknown type
+        t2 is an unknown type
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.

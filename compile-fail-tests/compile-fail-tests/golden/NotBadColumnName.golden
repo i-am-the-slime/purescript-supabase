@@ -1,0 +1,82 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: stilthouse
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.NotBadColumnName
+[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:16:49
+
+  16    _ <- client # from Schema.products # select # not_ @"missing" isTrue # run
+                                                      ^^^^^^^^^^^^^^^^^^^^^^
+
+  Could not match type
+    ( missing :: t1
+    ...
+    | t2
+    )
+  with type
+    ( created_at :: Timestamp
+    , description :: Maybe String
+    , fts :: Maybe String
+    , id :: Int
+    , in_stock :: Boolean
+    , metadata :: Foreign
+    , name :: String
+    , price :: Number
+    , tags :: Array String
+    ...
+    )
+  while solving type class constraint
+    Prim.Row.Cons "missing"
+                  t1
+                  t2
+                  ( created_at :: Timestamp
+                  , description :: Maybe String
+                  , fts :: Maybe String
+                  , id :: Int
+                  , in_stock :: Boolean
+                  , metadata :: Foreign
+                  , name :: String
+                  , price :: Number
+                  , tags :: Array String
+                  )
+  while applying a function not_
+    of type IsSymbol "missing" => Cons @Type "missing" t1 t2 t3 => FilterOp -> FilterBuilder t3 t4 -> FilterBuilder t3 t4
+    to argument isTrue
+  while checking that expression (not_) isTrue
+    has type FilterBuilder
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
+               , id :: Int
+               , in_stock :: Boolean
+               , metadata :: Foreign
+               , name :: String
+               , price :: Number
+               , tags :: Array String
+               )
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
+               , id :: Int
+               , in_stock :: Boolean
+               , metadata :: Foreign
+               , name :: String
+               , price :: Number
+               , tags :: Array String
+               )
+             -> t0
+  in value declaration test
+  where t0 is an unknown type
+        t1 is an unknown type
+        t3 is an unknown type
+        t4 is an unknown type
+        t2 is an unknown type
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.

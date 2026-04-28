@@ -1,0 +1,88 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: stilthouse
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.SelectBadColumn
+[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:14:40
+
+  14    _ <- client # from Schema.products # selectColumns @"nonexistent" # run
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  Could not match type
+    ( nonexistent :: t1
+    ...
+    | t2
+    )
+  with type
+    ( created_at :: Timestamp
+    , description :: Maybe String
+    , fts :: Maybe String
+    , id :: Int
+    , in_stock :: Boolean
+    , metadata :: Foreign
+    , name :: String
+    , price :: Number
+    , tags :: Array String
+    ...
+    )
+  while solving type class constraint
+    Prim.Row.Cons "nonexistent"
+                  t1
+                  t2
+                  ( created_at :: Timestamp
+                  , description :: Maybe String
+                  , fts :: Maybe String
+                  , id :: Int
+                  , in_stock :: Boolean
+                  , metadata :: Foreign
+                  , name :: String
+                  , price :: Number
+                  , tags :: Array String
+                  )
+  while checking that type forall (row :: Row Type) (rels :: Row Type) (result :: Row Type). IsSymbol "nonexistent" => ParseSelect "nonexistent" row rels result => QueryBuilder row rels -> FilterBuilder row result
+    is at least as general as type QueryBuilder
+                                     ( created_at :: Timestamp
+                                     , description :: Maybe String
+                                     , fts :: Maybe String
+                                     , id :: Int
+                                     , in_stock :: Boolean
+                                     , metadata :: Foreign
+                                     , name :: String
+                                     , price :: Number
+                                     , tags :: Array String
+                                     )
+                                     ( order_items :: Rel ... ...
+                                     , orders :: Rel ... ...
+                                     , product_categories :: Rel ... ...
+                                     )
+                                   -> t0
+  while checking that expression selectColumns
+    has type QueryBuilder
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
+               , id :: Int
+               , in_stock :: Boolean
+               , metadata :: Foreign
+               , name :: String
+               , price :: Number
+               , tags :: Array String
+               )
+               ( order_items :: Rel ... ...
+               , orders :: Rel ... ...
+               , product_categories :: Rel ... ...
+               )
+             -> t0
+  in value declaration test
+  where t0 is an unknown type
+        t1 is an unknown type
+        t2 is an unknown type
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.

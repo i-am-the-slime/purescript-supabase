@@ -1,0 +1,66 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: supabase
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.UpsertBogusField
+[ERROR 1/1 TypesDoNotUnify] src/_CompileFailTest.purs:14:40
+
+  14    _ <- client # from Schema.products # upsert { bogus_field: "nope" } # run
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  Could not match type
+    ( bogus_field :: String
+    ...
+    | t2
+    )
+  with type
+    ( description :: Maybe String
+    , id :: Int
+    , in_stock :: Boolean
+    , name :: String
+    , price :: Number
+    , tags :: Array String
+    ...
+    )
+  while solving type class constraint
+    Prim.Row.Union ( bogus_field :: String
+                   )
+                   t2
+                   ( description :: Maybe String
+                   , id :: Int
+                   , in_stock :: Boolean
+                   , name :: String
+                   , price :: Number
+                   , tags :: Array String
+                   )
+  while applying a function upsert
+    of type WriteForeign (Record t1) => Union @Type t1 t2 t3 => Record t1 -> QueryBuilder t3 t4 -> FilterBuilder t3 t3
+    to argument { bogus_field: "nope"
+                }
+  while checking that expression upsert { bogus_field: "nope"
+                                        }
+    has type QueryBuilder
+               ( description :: Maybe String
+               , id :: Int
+               , in_stock :: Boolean
+               , name :: String
+               , price :: Number
+               , tags :: Array String
+               )
+               (() @Type)
+             -> t0
+  in value declaration test
+  where t0 is an unknown type
+        t3 is an unknown type
+        t4 is an unknown type
+        t1 is an unknown type
+        t2 is an unknown type
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.

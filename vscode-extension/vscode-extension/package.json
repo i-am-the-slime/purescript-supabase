@@ -1,0 +1,25 @@
+{
+  "name": "supabase-purescript",
+  "displayName": "Supabase PureScript",
+  "description": "Schema-aware autocomplete for PureScript Supabase bindings",
+  "version": "0.1.0",
+  "publisher": "stilthouse",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Programming Languages"],
+  "activationEvents": ["onLanguage:purescript"],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Supabase PureScript",
+      "properties": {
+        "supabasePurescript.schemaPath": {
+          "type": "string",
+          "default": "src/Supabase/Schema.purs",
+          "description": "Path to the generated Schema.purs file (relative to workspace root)"
+        }
+      }
+    }
+  }
+}

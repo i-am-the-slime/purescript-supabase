@@ -1,0 +1,20 @@
+
+Reading Spago workspace configuration...
+
+✓ Selecting package to build: stilthouse
+
+Downloading dependencies...
+Building...
+[1 of 1] Compiling CompileFailTests.ResultWrongType
+[ERROR 1/1 UnknownName] src/_CompileFailTest.purs:16:5
+
+  16      Nothing -> ""
+          ^^^^^^^
+
+  Unknown data constructor Nothing
+
+           Src   Lib   All
+Warnings     0     0     0
+Errors       1     0     1
+
+✘ Failed to build.
