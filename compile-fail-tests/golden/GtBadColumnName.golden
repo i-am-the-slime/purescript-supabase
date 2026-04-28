@@ -17,9 +17,12 @@ Building...
     | t2
     )
   with type
-    ( description :: Maybe String
+    ( created_at :: Timestamp
+    , description :: Maybe String
+    , fts :: Maybe String
     , id :: Int
     , in_stock :: Boolean
+    , metadata :: Foreign
     , name :: String
     , price :: Number
     , tags :: Array String
@@ -29,9 +32,12 @@ Building...
     Prim.Row.Cons "nonexistent"
                   t1
                   t2
-                  ( description :: Maybe String
+                  ( created_at :: Timestamp
+                  , description :: Maybe String
+                  , fts :: Maybe String
                   , id :: Int
                   , in_stock :: Boolean
+                  , metadata :: Foreign
                   , name :: String
                   , price :: Number
                   , tags :: Array String
@@ -41,16 +47,22 @@ Building...
     to argument "5"
   while checking that expression (gt) "5"
     has type FilterBuilder
-               ( description :: Maybe String
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
                , id :: Int
                , in_stock :: Boolean
+               , metadata :: Foreign
                , name :: String
                , price :: Number
                , tags :: Array String
                )
-               ( description :: Maybe String
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
                , id :: Int
                , in_stock :: Boolean
+               , metadata :: Foreign
                , name :: String
                , price :: Number
                , tags :: Array String

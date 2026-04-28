@@ -17,9 +17,12 @@ Building...
     | t2
     )
   with type
-    ( description :: Maybe String
+    ( created_at :: Timestamp
+    , description :: Maybe String
+    , fts :: Maybe String
     , id :: Int
     , in_stock :: Boolean
+    , metadata :: Foreign
     , name :: String
     , price :: Number
     , tags :: Array String
@@ -29,9 +32,12 @@ Building...
     Prim.Row.Cons "nope"
                   t1
                   t2
-                  ( description :: Maybe String
+                  ( created_at :: Timestamp
+                  , description :: Maybe String
+                  , fts :: Maybe String
                   , id :: Int
                   , in_stock :: Boolean
+                  , metadata :: Foreign
                   , name :: String
                   , price :: Number
                   , tags :: Array String
@@ -43,16 +49,22 @@ Building...
   while checking that expression (contains) [ "x"
                                             ]
     has type FilterBuilder
-               ( description :: Maybe String
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
                , id :: Int
                , in_stock :: Boolean
+               , metadata :: Foreign
                , name :: String
                , price :: Number
                , tags :: Array String
                )
-               ( description :: Maybe String
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
                , id :: Int
                , in_stock :: Boolean
+               , metadata :: Foreign
                , name :: String
                , price :: Number
                , tags :: Array String

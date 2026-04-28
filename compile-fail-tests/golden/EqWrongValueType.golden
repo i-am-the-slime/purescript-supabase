@@ -23,16 +23,22 @@ Building...
     to argument "ten"
   while checking that expression (eq_) "ten"
     has type FilterBuilder
-               ( description :: Maybe String
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
                , id :: Int
                , in_stock :: Boolean
+               , metadata :: Foreign
                , name :: String
                , price :: Number
                , tags :: Array String
                )
-               ( description :: Maybe String
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
                , id :: Int
                , in_stock :: Boolean
+               , metadata :: Foreign
                , name :: String
                , price :: Number
                , tags :: Array String

@@ -12,9 +12,12 @@ Building...
                              ^^^^^^^^^^^^^^
 
   Type of expression lacks required label not_a_column.
-  while checking that type { description :: Maybe String
+  while checking that type { created_at :: Timestamp
+                           , description :: Maybe String
+                           , fts :: Maybe String
                            , id :: Int
                            , in_stock :: Boolean
+                           , metadata :: Foreign
                            , name :: String
                            , price :: Number
                            , tags :: Array String

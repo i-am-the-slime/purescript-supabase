@@ -17,9 +17,12 @@ Building...
     | t2
     )
   with type
-    ( description :: Maybe String
+    ( created_at :: Timestamp
+    , description :: Maybe String
+    , fts :: Maybe String
     , id :: Int
     , in_stock :: Boolean
+    , metadata :: Foreign
     , name :: String
     , price :: Number
     , tags :: Array String
@@ -29,9 +32,12 @@ Building...
     Prim.Row.Union ( nonexistent :: String
                    )
                    t2
-                   ( description :: Maybe String
+                   ( created_at :: Timestamp
+                   , description :: Maybe String
+                   , fts :: Maybe String
                    , id :: Int
                    , in_stock :: Boolean
+                   , metadata :: Foreign
                    , name :: String
                    , price :: Number
                    , tags :: Array String
@@ -43,14 +49,20 @@ Building...
   while checking that expression update { nonexistent: "x"
                                         }
     has type QueryBuilder
-               ( description :: Maybe String
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
                , id :: Int
                , in_stock :: Boolean
+               , metadata :: Foreign
                , name :: String
                , price :: Number
                , tags :: Array String
                )
-               (() @Type)
+               ( order_items :: Rel ... ...
+               , orders :: Rel ... ...
+               , product_categories :: Rel ... ...
+               )
              -> t0
   in value declaration test
   where t0 is an unknown type

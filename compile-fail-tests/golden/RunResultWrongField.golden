@@ -12,9 +12,12 @@ Building...
                                            ^^^^
 
   Could not match type
-    ( description :: Maybe String
+    ( created_at :: Timestamp
+    , description :: Maybe String
+    , fts :: Maybe String
     , id :: Int
     , in_stock :: Boolean
+    , metadata :: Foreign
     , name :: String
     , price :: Number
     , tags :: Array String
@@ -25,9 +28,12 @@ Building...
     ...
     | t2
     )
-  while trying to match type { description :: Maybe String
+  while trying to match type { created_at :: Timestamp
+                             , description :: Maybe String
+                             , fts :: Maybe String
                              , id :: Int
                              , in_stock :: Boolean
+                             , metadata :: Foreign
                              , name :: String
                              , price :: Number
                              , tags :: Array String

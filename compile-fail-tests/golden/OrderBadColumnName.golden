@@ -17,9 +17,12 @@ Building...
     | t2
     )
   with type
-    ( description :: Maybe String
+    ( created_at :: Timestamp
+    , description :: Maybe String
+    , fts :: Maybe String
     , id :: Int
     , in_stock :: Boolean
+    , metadata :: Foreign
     , name :: String
     , price :: Number
     , tags :: Array String
@@ -29,25 +32,34 @@ Building...
     Prim.Row.Cons "doesnt_exist"
                   t1
                   t2
-                  ( description :: Maybe String
+                  ( created_at :: Timestamp
+                  , description :: Maybe String
+                  , fts :: Maybe String
                   , id :: Int
                   , in_stock :: Boolean
+                  , metadata :: Foreign
                   , name :: String
                   , price :: Number
                   , tags :: Array String
                   )
   while checking that type forall (val :: Type) (table :: Row Type) (result :: Row Type) (rest :: Row Type). IsSymbol "doesnt_exist" => Cons @Type "doesnt_exist" val rest table => FilterBuilder table result -> FilterBuilder table result
     is at least as general as type FilterBuilder
-                                     ( description :: Maybe String
+                                     ( created_at :: Timestamp
+                                     , description :: Maybe String
+                                     , fts :: Maybe String
                                      , id :: Int
                                      , in_stock :: Boolean
+                                     , metadata :: Foreign
                                      , name :: String
                                      , price :: Number
                                      , tags :: Array String
                                      )
-                                     ( description :: Maybe String
+                                     ( created_at :: Timestamp
+                                     , description :: Maybe String
+                                     , fts :: Maybe String
                                      , id :: Int
                                      , in_stock :: Boolean
+                                     , metadata :: Foreign
                                      , name :: String
                                      , price :: Number
                                      , tags :: Array String
@@ -55,16 +67,22 @@ Building...
                                    -> t0
   while checking that expression order
     has type FilterBuilder
-               ( description :: Maybe String
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
                , id :: Int
                , in_stock :: Boolean
+               , metadata :: Foreign
                , name :: String
                , price :: Number
                , tags :: Array String
                )
-               ( description :: Maybe String
+               ( created_at :: Timestamp
+               , description :: Maybe String
+               , fts :: Maybe String
                , id :: Int
                , in_stock :: Boolean
+               , metadata :: Foreign
                , name :: String
                , price :: Number
                , tags :: Array String
