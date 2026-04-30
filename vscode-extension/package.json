@@ -1,8 +1,13 @@
 {
   "name": "supabase-purescript",
   "displayName": "Supabase PureScript",
-  "description": "Schema-aware autocomplete for PureScript Supabase bindings",
+  "description": "Schema-aware autocomplete for PureScript Supabase bindings — columns, relations, nested selects, typed filters",
   "version": "0.1.0",
+  "publisher": "i-am-the-slime",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/i-am-the-slime/purescript-supabase"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -11,17 +16,5 @@
   "main": "./extension.js",
   "dependencies": {
     "vscode-languageclient": "^9.0.1"
-  },
-  "contributes": {
-    "configuration": {
-      "title": "Supabase PureScript",
-      "properties": {
-        "supabasePurescript.serverPath": {
-          "type": "string",
-          "default": "",
-          "description": "Path to the compiled LSP server (output/LSP.Server/index.js). If empty, looks in workspace node_modules."
-        }
-      }
-    }
   }
 }

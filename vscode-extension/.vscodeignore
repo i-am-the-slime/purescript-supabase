@@ -1,0 +1,3 @@
+bun.lock
+vscode-extension/
+*.vsix
