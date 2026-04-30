@@ -19,7 +19,7 @@ import Node.Encoding (Encoding(..))
 import Node.EventEmitter (on_)
 import Node.FS.Sync (readTextFile)
 import Node.Process as Process
-import Node.Stream (dataHStr, writeString, setEncoding)
+import Node.Stream (dataHStr, writeString, setEncoding, resume)
 
 main :: Effect Unit
 main = do
@@ -28,6 +28,7 @@ main = do
   bufferRef <- Ref.new ""
 
   setEncoding Process.stdin UTF8
+  resume Process.stdin
 
   Process.stdin # on_ dataHStr \chunk -> do
     Ref.modify_ (_ <> chunk) bufferRef

@@ -12,6 +12,7 @@ import Test.Supabase.Query as Query
 import Test.Supabase.Auth as Auth
 import Test.Supabase.SSR as SSR
 import Test.Supabase.Stress as Stress
+import Test.LSP as LSP
 
 main :: Effect Unit
 main = launchAff_ do
@@ -22,4 +23,5 @@ main = launchAff_ do
     Auth.spec
     SSR.spec
     Stress.spec
+    LSP.spec
     compileFail

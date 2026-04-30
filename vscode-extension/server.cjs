@@ -1,3 +1,72 @@
+var __create = Object.create;
+var __getProtoOf = Object.getPrototypeOf;
+var __defProp = Object.defineProperty;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __toESM = (mod, isNodeMode, target) => {
+  target = mod != null ? __create(__getProtoOf(mod)) : {};
+  const to = isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target;
+  for (let key of __getOwnPropNames(mod))
+    if (!__hasOwnProp.call(to, key))
+      __defProp(to, key, {
+        get: () => mod[key],
+        enumerable: true
+      });
+  return to;
+};
+var __moduleCache = /* @__PURE__ */ new WeakMap;
+var __toCommonJS = (from) => {
+  var entry = __moduleCache.get(from), desc;
+  if (entry)
+    return entry;
+  entry = __defProp({}, "__esModule", { value: true });
+  if (from && typeof from === "object" || typeof from === "function")
+    __getOwnPropNames(from).map((key) => !__hasOwnProp.call(entry, key) && __defProp(entry, key, {
+      get: () => from[key],
+      enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+    }));
+  __moduleCache.set(from, entry);
+  return entry;
+};
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, {
+      get: all[name],
+      enumerable: true,
+      configurable: true,
+      set: (newValue) => all[name] = () => newValue
+    });
+};
+
+// output/LSP.Server/index.js
+var exports_LSP = {};
+__export(exports_LSP, {
+  walkDepth: () => walkDepth,
+  tailArray: () => tailArray,
+  stringify: () => stringify,
+  startsWith: () => startsWith,
+  reply: () => reply,
+  processBuffer: () => processBuffer,
+  parseIntNullable: () => parseIntNullable,
+  parseContentLength: () => parseContentLength,
+  main: () => main,
+  loadSchema: () => loadSchema,
+  jsonParse: () => jsonParse,
+  isNull: () => isNull,
+  handleMessage: () => handleMessage,
+  findByValueName: () => findByValueName,
+  fieldStr: () => fieldStr,
+  fieldInt: () => fieldInt,
+  fieldArr: () => fieldArr,
+  field: () => field,
+  exit: () => exit,
+  completions: () => completions,
+  byteLength: () => byteLength,
+  arraySlice: () => arraySlice
+});
+module.exports = __toCommonJS(exports_LSP);
+
 // output/LSP.Server/foreign.js
 var jsonParse = (s) => {
   try {
@@ -2081,51 +2150,22 @@ var on_ = function(v) {
 };
 
 // output/Node.FS.Sync/foreign.js
-import {
-  accessSync,
-  copyFileSync,
-  mkdtempSync,
-  renameSync,
-  truncateSync,
-  chownSync,
-  chmodSync,
-  statSync,
-  lstatSync,
-  linkSync,
-  symlinkSync,
-  readlinkSync,
-  realpathSync,
-  unlinkSync,
-  rmdirSync,
-  rmSync,
-  mkdirSync,
-  readdirSync,
-  utimesSync,
-  readFileSync,
-  writeFileSync,
-  appendFileSync,
-  existsSync,
-  openSync,
-  readSync,
-  writeSync,
-  fsyncSync,
-  closeSync
-} from "node:fs";
+var import_node_fs = require("node:fs");
 // output/Node.FS.Constants/foreign.js
-import { constants } from "node:fs";
-var f_OK = constants.F_OK;
-var r_OK = constants.R_OK;
-var w_OK = constants.W_OK;
-var x_OK = constants.X_OK;
-var copyFile_EXCL = constants.COPYFILE_EXCL;
-var copyFile_FICLONE = constants.COPYFILE_FICLONE;
-var copyFile_FICLONE_FORCE = constants.COPYFILE_FICLONE_FORCE;
+var import_node_fs2 = require("node:fs");
+var f_OK = import_node_fs2.constants.F_OK;
+var r_OK = import_node_fs2.constants.R_OK;
+var w_OK = import_node_fs2.constants.W_OK;
+var x_OK = import_node_fs2.constants.X_OK;
+var copyFile_EXCL = import_node_fs2.constants.COPYFILE_EXCL;
+var copyFile_FICLONE = import_node_fs2.constants.COPYFILE_FICLONE;
+var copyFile_FICLONE_FORCE = import_node_fs2.constants.COPYFILE_FICLONE_FORCE;
 // output/Node.FS.Sync/index.js
 var show2 = /* @__PURE__ */ show(showEncoding);
 var readTextFile = function(encoding) {
   return function(file) {
     return function() {
-      return readFileSync(file, {
+      return import_node_fs.readFileSync(file, {
         encoding: show2(encoding)
       });
     };
@@ -2133,22 +2173,22 @@ var readTextFile = function(encoding) {
 };
 
 // output/Node.Process/foreign.js
-import process2 from "process";
-var abortImpl = process2.abort ? () => process2.abort() : null;
-var channelRefImpl = process2.channel && process2.channel.ref ? () => process2.channel.ref() : null;
-var channelUnrefImpl = process2.channel && process2.channel.unref ? () => process2.channel.unref() : null;
-var debugPort = process2.debugPort;
-var disconnectImpl = process2.disconnect ? () => process2.disconnect() : null;
-var pid = process2.pid;
-var platformStr = process2.platform;
-var ppid = process2.ppid;
-var stdin = process2.stdin;
-var stdout = process2.stdout;
-var stderr = process2.stderr;
-var stdinIsTTY = process2.stdinIsTTY;
-var stdoutIsTTY = process2.stdoutIsTTY;
-var stderrIsTTY = process2.stderrIsTTY;
-var version = process2.version;
+var import_process = __toESM(require("process"));
+var abortImpl = import_process.default.abort ? () => import_process.default.abort() : null;
+var channelRefImpl = import_process.default.channel && import_process.default.channel.ref ? () => import_process.default.channel.ref() : null;
+var channelUnrefImpl = import_process.default.channel && import_process.default.channel.unref ? () => import_process.default.channel.unref() : null;
+var debugPort = import_process.default.debugPort;
+var disconnectImpl = import_process.default.disconnect ? () => import_process.default.disconnect() : null;
+var pid = import_process.default.pid;
+var platformStr = import_process.default.platform;
+var ppid = import_process.default.ppid;
+var stdin = import_process.default.stdin;
+var stdout = import_process.default.stdout;
+var stderr = import_process.default.stderr;
+var stdinIsTTY = import_process.default.stdinIsTTY;
+var stdoutIsTTY = import_process.default.stdoutIsTTY;
+var stderrIsTTY = import_process.default.stderrIsTTY;
+var version = import_process.default.version;
 // output/Node.Stream/foreign.js
 var setEncodingImpl = (s, enc) => s.setEncoding(enc);
 var readChunkImpl = (useBuffer, useString, chunk) => {
@@ -2509,28 +2549,4 @@ var main = function __do() {
       return processBuffer(bufferRef)(schemaRef)(docsRef)();
     };
   })(stdin)();
-};
-export {
-  walkDepth,
-  tailArray,
-  stringify,
-  startsWith,
-  reply,
-  processBuffer,
-  parseIntNullable,
-  parseContentLength,
-  main,
-  loadSchema,
-  jsonParse,
-  isNull,
-  handleMessage,
-  findByValueName,
-  fieldStr,
-  fieldInt,
-  fieldArr,
-  field,
-  exit,
-  completions,
-  byteLength,
-  arraySlice
 };

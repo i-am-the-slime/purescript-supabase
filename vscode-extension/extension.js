@@ -5,7 +5,7 @@ const path = require("path");
 let client;
 
 function activate(context) {
-  const serverModule = path.join(context.extensionPath, "server.js");
+  const serverModule = path.join(context.extensionPath, "server.cjs");
 
   const serverOptions = {
     run: { module: serverModule, transport: TransportKind.stdio },

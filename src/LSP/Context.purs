@@ -16,6 +16,11 @@ data CompletionContext
   = SelectCtx { table :: String, prefix :: String, depth :: Array String }
   | FilterCtx { table :: String, prefix :: String }
 
+derive instance Eq CompletionContext
+instance Show CompletionContext where
+  show (SelectCtx r) = "SelectCtx " <> show r
+  show (FilterCtx r) = "FilterCtx " <> show r
+
 detectContext :: String -> Int -> String -> Int -> Maybe CompletionContext
 detectContext line col fullText lineNum = do
   let before = take col line
